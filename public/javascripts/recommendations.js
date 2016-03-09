@@ -12,7 +12,7 @@ function renderData(datas) {
 }
 
 var sd = document.querySelector("#song")
-fetch(`/songs/${sd.dataset.id}/recommendations`)
+fetch(`/songs/${sd.dataset.id}/recommendations`, {credentials: 'include'})
   .then(data => data.json())
   .then(data => {
     var rec = document.querySelector("#recommendations");

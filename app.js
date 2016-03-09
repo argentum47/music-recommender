@@ -46,7 +46,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use((req, res, next) => {
-  if(req.session.user) req.user = req.session.user;
+  req.user = req.session.user;
+  res.header('Access-Control-Allow-Credentials', 'true');
   next();
 })
 

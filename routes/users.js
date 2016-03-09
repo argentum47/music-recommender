@@ -33,7 +33,6 @@ router.post('/create', function(req, res, next) {
       insertUser.finalize(function() {
         dB.getAsync("SELECT id, name FROM users WHERE name = ?", name)
         .then(user => {
-          console.log(user);
           req.logIn(user, (err) => {
             if(!err)
               res.redirect('/')
