@@ -1,0 +1,10 @@
+<nav>
+  <% if(locals.user) { %>
+    Hello, <strong><%= user.name %>
+    <a href="/songs">Songs</a>
+    <a href="/logout">Logout</a>
+  <% } else { %>
+    <a href="/users/new">New</a>
+    <a href="/users/login">Login</a>
+  <% } %>
+</nav>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include _header %>
+<%- include('_header') %>
 <body>
   <div id="song" data-id=<%= song.id %>>
-    <%= song.name %> <%= song.listened %>
+    <%= song.name %>
   </div>
   Also listen to:
   <ul id="recommendations"></ul>

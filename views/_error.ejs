@@ -1,0 +1,11 @@
+<% if(locals.error) { %>
+  <div id="errors">
+    <% if(error == "NAME_EXISTS") { %> 
+      <p>Username already taken</p>
+    <% } else if(error == "UNAUTHORIZED") { %>
+      <p>Username/Password Invalid</p>
+    <% } else if(error == "INTERNAL_ERROR") { %>
+      <p>Internal error occured</p>
+    <% } %>
+  </div>
+<% } %>

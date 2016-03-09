@@ -4,8 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var routes = require('./routes/index');
+var users  = require('./routes/users');
 var songs = require('./routes/songs');
 
 var app = express();
@@ -20,9 +22,36 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  store: new RedisStore({
+      host: '127.0.0.1',
+      port: 6379
+  }),
+  path: '/',
+  secret: 'abcdefghijkmnop',
+  resave: false,
+  saveUninitialized: true
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use((req, res, next) => {
+  req.logIn = function(user, cb) {
+    if(!user) cb("UNAUTHPRIZED");
+    else {
+      req.session.user = user;
+      req.user = user;
+      cb();
+    }
+  };
+  next();
+});
+app.use((req, res, next) => {
+  if(req.session.user) req.user = req.session.user;
+  next();
+})
 
 app.use('/', routes);
+app.use('/users', users);
 app.use('/songs', songs);
 
 // catch 404 and forward to error handler

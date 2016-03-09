@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('_header') %>
+<body>
+  <%- include('_error') %>
+  <form method="post" action="/users/login">
+    <input type="text" name="name" placeholder="Enter a name"/>
+    <br/>
+    <input type="password" name="password">
+    <br/>
+    <input type="submit" value="Login"/>
+  </form>
+</body>
+</html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include _header %>
+<%- include('_header') %>
 <body>
-<ul>
+  <%- include _nav %>
+  <ul>
     <% songs.forEach(function(song) { %>
-      <li><a href=/songs/<%= song.id %>><%= song.name %></a></li>
+    <li><a href=/songs/<%= song.id %>><%= song.name %></a></li>
     <% }); %>
   </ul>
 </body>
