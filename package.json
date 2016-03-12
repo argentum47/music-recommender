@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "migrate": "node tasks/db.js",
+    "migrate": "node tasks/migrations.js",
     "start": "nodemon ./bin/www"
   },
   "dependencies": {
