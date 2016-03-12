@@ -3,10 +3,13 @@
 <%- include('_header') %>
 <body>
   <div id="song" data-id=<%= song.id %>>
-    <%= song.name %>
+    <%= song.name %> <a data-id=<%= song.id %> id="like">Like</a>
   </div>
+ 
+  <br/>
   Also listen to:
   <ul id="recommendations"></ul>
-  <script src="/javascripts/recommendations.js"></script>
+  <script type="text/javascript" src="/javascripts/recommendations.js"></script>
+  <script src="/javascripts/like.js"></script>
 </body>
 </html>

@@ -30,16 +30,14 @@ router.post('/create', function(req, res, next) {
     if(err) {
       res.render("new", { error: "NAME_EXISTS" });
     } else {
-      insertUser.finalize(function() {
-        dB.getAsync("SELECT id, name FROM users WHERE name = ?", name)
-        .then(user => {
-          req.logIn(user, (err) => {
-            if(!err)
-              res.redirect('/')
-            else res.render("new", { error: "INTERNAL_ERROR" })
-          });
-        }).catch(e => next(e));
-      });
+      dB.getAsync("SELECT id, name FROM users WHERE name = ?", name)
+      .then(user => {
+        req.logIn(user, (err) => {
+          if(!err)
+            res.redirect('/')
+          else res.render("new", { error: "INTERNAL_ERROR" })
+        });
+      }).catch(e => next(e));
     }
   });
 });

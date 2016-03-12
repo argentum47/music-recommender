@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users  = require('./routes/users');
 var songs = require('./routes/songs');
 
+var utils = require("./utils");
 var app = express();
 
 // view engine setup

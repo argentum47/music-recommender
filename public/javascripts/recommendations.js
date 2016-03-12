@@ -11,10 +11,12 @@ function renderData(datas) {
   return frag;
 }
 
-var sd = document.querySelector("#song")
+var sd = document.querySelector("#song");
+
 fetch(`/songs/${sd.dataset.id}/recommendations`, {credentials: 'include'})
-  .then(data => data.json())
-  .then(data => {
-    var rec = document.querySelector("#recommendations");
-    rec.appendChild(renderData(data));
-  });
+.then(data => data.json())
+.then(data => {
+  var rec = document.querySelector("#recommendations");
+  rec.appendChild(renderData(data));
+});
+
